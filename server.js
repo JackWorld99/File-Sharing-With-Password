@@ -42,12 +42,12 @@ async function handleDownload(req, res){
 
     if(file.password!=null){
         if(req.body.password == null){
-            res.render("password")
+            res.render("download")
             return
         } 
 
         if(!(await bcrypt.compare(req.body.password, file.password))){
-          res.render("password", { error: true })
+          res.render("download", { error: true })
           return
         }
     }
