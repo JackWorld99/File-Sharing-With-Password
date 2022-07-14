@@ -24,6 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use("/", urlRoute);
 
-app.listen(port, () => {
+app.listen(port || 5000, () => {
   console.log(`App listening on port ${port}`);
 });
