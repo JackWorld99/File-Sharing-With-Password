@@ -15,6 +15,11 @@ const File = new mongoose.Schema({
     required: true,
     default: 0,
   },
+  expireAt: {
+    type: Date,
+    default: Date.now,
+    index: { expireAt: 1, expireAfterSeconds: 72000 },
+  },
 });
 
 module.exports = mongoose.model("File", File);

@@ -1,5 +1,22 @@
 const bcrypt = require("bcrypt");
 const File = require("../models/File");
+const schedule = require("node-schedule");
+const fs = require("fs");
+
+const job = schedule.scheduleJob("* * */1 * * *", function () {
+  var fileNames = fs.readdirSync("./uploads");
+  fileNames.forEach((result) => {
+    var pathName = "uploads\\" + result;
+    File.exists({ path: pathName }, function (err, doc) {
+      if (err) console.log(err);
+      else {
+        if (doc == null) {
+          fs.unlinkSync("./uploads/" + result);
+        }
+      }
+    });
+  });
+});
 
 exports.index = (req, res) => {
   res.render("index");
@@ -23,20 +40,27 @@ exports.uploadFile = async (req, res) => {
 exports.handleDownload = async (req, res) => {
   const file = await File.findById(req.params.id);
 
-  if (file.password != null) {
-    if (req.body.password == null) {
-      res.render("download");
-      return;
-    }
-
-    if (!(await bcrypt.compare(req.body.password, file.password))) {
-      res.render("download", { error: true });
-      return;
+  if(file == null){
+    res.render("download",{ expired: true });
+  }else{
+    if (file.password != null) {
+      if (req.body.password == null) {
+        res.render("download");
+        return;
+      }
+  
+      if (!(await bcrypt.compare(req.body.password, file.password))) {
+        res.render("download", { error: true });
+        return;
+      }
     }
   }
 
-  file.downloadCount++;
-  await file.save();
+  if(file != null){
+    file.downloadCount++;
+    await file.save();
 
-  res.download(file.path, file.originalName);
+    res.download(file.path);
+  }
+
 };
