@@ -1,5 +1,5 @@
 ## 🔐 Password Protect Your Files 📁
-A File Sharing tools build with Node Node Js, Express and MongoDB. Password protect files by converting to secure links. Before you share a link to a PDFs, Excels, Word Docs, ZIPs, CSVs, EXEs or any other file format, just set a password for the link so the recipient can only open it with the password you set.
+A File Sharing tools build with Node Node Js, Express and MongoDB. The tools includes file sharing, password protected files and a download count tracker. Before you share a link password protect files by encrypt the password, just set a password for the file so the file can only open it with the password you set. This tools supports PDF, Excel, Word Docs, ZIP, CSV, EXE or any other file format. 
 
 ### 📢 Features Demo
 
@@ -8,7 +8,7 @@ A File Sharing tools build with Node Node Js, Express and MongoDB. Password prot
 
 ### 🔎 How it works?
 
-#### Step 1: Upload File 📤
+#### Step 1: Upload File 📤 
 Click on " Upload " and select any file from your local storage.
 
 #### Step 2: Set A Password 🔐
