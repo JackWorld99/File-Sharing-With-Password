@@ -4,9 +4,9 @@ const schedule = require("node-schedule");
 const fs = require("fs");
 
 const job = schedule.scheduleJob("* * */1 * * *", function () {
-  var fileNames = fs.readdirSync("./uploads");
+  const fileNames = fs.readdirSync("./uploads").filter((files)=>files!=".gitkeep");
   fileNames.forEach((result) => {
-    var pathName = "uploads\\" + result;
+    const pathName = "uploads\\" + result;
     File.exists({ path: pathName }, function (err, doc) {
       if (err) console.log(err);
       else {
