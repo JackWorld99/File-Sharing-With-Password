@@ -9,13 +9,13 @@ A File Sharing tools build with Node Node Js, Express and MongoDB. Password prot
 ### 🔎 How it works?
 
 #### Step 1: Upload File 📤
-> Click on " Upload " and select any file from your local storage.
+Click on " Upload " and select any file from your local storage.
 
 #### Step 2: Set A Password 🔐
-> Enter a password to protect your document.
+Enter a password to protect your document.
 
 #### Step 3: Share Link 🔗
-> Copy and access the created link to download the file.
+Copy and access the created link to download the file.
 
 ---
 
