@@ -60,7 +60,7 @@ exports.handleDownload = async (req, res) => {
     file.downloadCount++;
     await file.save();
 
-    res.download(file.path);
+    res.download(file.path, file.originalName);
   }
 
 };
